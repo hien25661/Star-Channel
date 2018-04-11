@@ -3,17 +3,11 @@ package co.romaji.startchannel.android.adapters;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 
@@ -22,7 +16,7 @@ import butterknife.ButterKnife;
 import co.romaji.startchannel.android.R;
 import co.romaji.startchannel.android.model.ChannelInfoResult;
 import co.romaji.startchannel.android.utils.EventBusUtils;
-import co.romaji.startchannel.android.utils.YtcUtils;
+import co.romaji.startchannel.android.utils.Utils;
 import co.romaji.startchannel.android.utils.event.ShowDetailPlayListEvent;
 
 /**
@@ -62,12 +56,12 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ItemVi
                     photoUrl = mItem.getSnippet().getThumbnails().getMedium().getUrl();
                 }
                 if (photoUrl != null) {
-                    int width = (int)((float)(YtcUtils.getScreenWidth()) / 2.3f);
+                    int width = (int)((float)(Utils.getScreenWidth()) / 2.3f);
                     int height = (int)(float)(360 * width/480.0f);
                     holder.imvThumbnail.getLayoutParams().width = width;
                     holder.imvThumbnail.getLayoutParams().height = height;
                     holder.itemView.getLayoutParams().height = height;
-                    YtcUtils.fetSourceForImageView(holder.imvThumbnail,photoUrl);
+                    Utils.fetSourceForImageView(holder.imvThumbnail,photoUrl);
                 }
                 holder.itemView.setBackgroundColor(Color.WHITE);
                 if(position%2 != 0){

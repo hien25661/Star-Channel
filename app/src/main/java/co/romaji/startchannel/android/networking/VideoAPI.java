@@ -14,9 +14,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by nguyenvanhien on 4/2/18.
  */
 
-public class PasteBinAPI {
-    private static PasteBinAPI restAPI;
-    private GithubApiInterface githubApiInterface = ((GithubApiInterface)
+public class VideoAPI {
+    private static VideoAPI restAPI;
+    private VideoApiInterface videoApiInterface = ((VideoApiInterface)
             new Builder().baseUrl("https://www.googleapis.com/youtube/v3/")
                     .client(new OkHttpClient.Builder()
                             .connectTimeout(30000, TimeUnit.SECONDS)
@@ -26,24 +26,24 @@ public class PasteBinAPI {
                             .create(new GsonBuilder()
                                     .setLenient()
                                     .create()))
-                                    .build().create(GithubApiInterface.class));
+                                    .build().create(VideoApiInterface.class));
 
-    public static PasteBinAPI getInstant() {
+    public static VideoAPI getInstant() {
         if (restAPI == null) {
-            restAPI = new PasteBinAPI();
+            restAPI = new VideoAPI();
         }
         return restAPI;
     }
 
     public Call<ChannelInfoResult> getChannelInfoResult(){
-        return this.githubApiInterface.getChannelInfoResult();
+        return this.videoApiInterface.getChannelInfoResult();
     }
 
     public Call<PlayListItem> getListVideoPlayList(String playlistId){
-        return this.githubApiInterface.getListVideoPlayList(playlistId, Const.API_KEY);
+        return this.videoApiInterface.getListVideoPlayList(playlistId, Const.API_KEY);
     }
 
     public Call<VideoStatistic> getVideoStatistic(String videoID){
-        return this.githubApiInterface.getVideoStatistic(videoID, Const.API_KEY,"statistics");
+        return this.videoApiInterface.getVideoStatistic(videoID, Const.API_KEY,"statistics");
     }
 }

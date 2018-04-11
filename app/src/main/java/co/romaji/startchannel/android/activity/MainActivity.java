@@ -2,10 +2,8 @@ package co.romaji.startchannel.android.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -17,7 +15,7 @@ import co.romaji.startchannel.android.BaseActivity;
 import co.romaji.startchannel.android.R;
 import co.romaji.startchannel.android.adapters.PlayListAdapter;
 import co.romaji.startchannel.android.model.ChannelInfoResult;
-import co.romaji.startchannel.android.networking.PasteBinAPI;
+import co.romaji.startchannel.android.networking.VideoAPI;
 import co.romaji.startchannel.android.utils.Const;
 import co.romaji.startchannel.android.utils.event.ShowDetailPlayListEvent;
 import retrofit2.Call;
@@ -47,7 +45,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void loadChannel() {
-        PasteBinAPI.getInstant().getChannelInfoResult().enqueue(new Callback<ChannelInfoResult>() {
+        VideoAPI.getInstant().getChannelInfoResult().enqueue(new Callback<ChannelInfoResult>() {
             @Override
             public void onResponse(Call<ChannelInfoResult> call, Response<ChannelInfoResult> response) {
                 if(response!=null && response.body()!=null){

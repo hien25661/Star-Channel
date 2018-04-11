@@ -25,7 +25,7 @@ public class GetListVideoTask extends AsyncTask<Void, Void, PlayListItem> {
 
     @Override
     protected PlayListItem doInBackground(Void... voids) {
-        PasteBinAPI.getInstant().getListVideoPlayList(playListId).enqueue(new Callback<PlayListItem>() {
+        VideoAPI.getInstant().getListVideoPlayList(playListId).enqueue(new Callback<PlayListItem>() {
             @Override
             public void onResponse(Call<PlayListItem> call, Response<PlayListItem> response) {
                 if(response!=null && response.body()!=null){

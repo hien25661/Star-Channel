@@ -18,7 +18,7 @@ import co.romaji.startchannel.android.StarChannelApplication;
  * Created by nguyenvanhien on 4/3/18.
  */
 
-public class YtcUtils {
+public class Utils {
     public static int getScreenWidth() {
         return Resources.getSystem().getDisplayMetrics().widthPixels;
     }

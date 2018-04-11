@@ -25,9 +25,9 @@ import co.romaji.startchannel.android.interfaces.SimpleCallback;
 import co.romaji.startchannel.android.model.PlayListItem;
 import co.romaji.startchannel.android.model.VideoStatistic;
 import co.romaji.startchannel.android.networking.GetListVideoTask;
-import co.romaji.startchannel.android.networking.PasteBinAPI;
+import co.romaji.startchannel.android.networking.VideoAPI;
 import co.romaji.startchannel.android.utils.Const;
-import co.romaji.startchannel.android.utils.YtcUtils;
+import co.romaji.startchannel.android.utils.Utils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -132,7 +132,7 @@ public class VideoActivity extends YouTubeBaseActivity implements YouTubePlayer.
     }
 
     private void getVideoStatistic(final String videoName,final String videoId){
-        PasteBinAPI.getInstant().getVideoStatistic(videoId).enqueue(new Callback<VideoStatistic>() {
+        VideoAPI.getInstant().getVideoStatistic(videoId).enqueue(new Callback<VideoStatistic>() {
             @Override
             public void onResponse(Call<VideoStatistic> call, Response<VideoStatistic> response) {
                 youTubePlayer.loadVideo(videoId);
@@ -142,7 +142,7 @@ public class VideoActivity extends YouTubeBaseActivity implements YouTubePlayer.
                     if(videoStatistic.getItems()!=null && videoStatistic.getItems().size()>0){
                        VideoStatistic.Item.Statistics statistics = videoStatistic.getItems().get(0).getStatistics();
                        if(statistics!=null){
-                            tvVideoCount.setText(YtcUtils.convertNumberFormat(statistics.getViewCount()) + " views");
+                            tvVideoCount.setText(Utils.convertNumberFormat(statistics.getViewCount()) + " views");
                        }
                     }
                 }

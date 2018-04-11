@@ -13,7 +13,7 @@ import retrofit2.http.Query;
  * Created by nguyenvanhien on 4/2/18.
  */
 
-public interface GithubApiInterface {
+public interface VideoApiInterface {
 
     @GET("playlists?part=snippet&maxResults=50&key="+ Const.API_KEY+"&channelId="+Const.CHANNEL_ID_EN)
     Call<ChannelInfoResult> getChannelInfoResult();

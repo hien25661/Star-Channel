@@ -3,7 +3,6 @@ package co.romaji.startchannel.android.adapters;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import co.romaji.startchannel.android.R;
 import co.romaji.startchannel.android.model.PlayListItem;
-import co.romaji.startchannel.android.utils.YtcUtils;
+import co.romaji.startchannel.android.utils.Utils;
 
 /**
  * Created by nguyenvanhien on 4/3/18.
@@ -66,10 +65,10 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ItemViewHold
                     photoUrl = mItem.getSnippet().getThumbnails().getStandard().getUrl();
                 }
                 if (photoUrl != null) {
-                    int width = (int)((float)(YtcUtils.getScreenWidth()) / 2);
+                    int width = (int)((float)(Utils.getScreenWidth()) / 2);
                     int height = (int)(float)(360 * width/480.0f);
                     holder.imvThumbnail.getLayoutParams().height = height;
-                    YtcUtils.fetSourceForImageView(holder.imvThumbnail,photoUrl);
+                    Utils.fetSourceForImageView(holder.imvThumbnail,photoUrl);
                     holder.tvVideoName.setText(mItem.getSnippet().getTitle());
                 }
                 holder.itemView.setBackgroundColor(Color.WHITE);
