@@ -55,7 +55,12 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ItemVi
         if (position >= 0 && position < items.size()) {
             final ChannelInfoResult.Item mItem = items.get(position);
             if (mItem != null) {
-                String photoUrl = mItem.getSnippet().getThumbnails().getHigh().getUrl();
+                String photoUrl = mItem.getSnippet().getThumbnails().getDefault().getUrl();
+                if(mItem.getSnippet().getThumbnails().getHigh()!=null){
+                    photoUrl = mItem.getSnippet().getThumbnails().getHigh().getUrl();
+                }else if(mItem.getSnippet().getThumbnails().getMedium()!=null){
+                    photoUrl = mItem.getSnippet().getThumbnails().getMedium().getUrl();
+                }
                 if (photoUrl != null) {
                     int width = (int)((float)(YtcUtils.getScreenWidth()) / 2.3f);
                     int height = (int)(float)(360 * width/480.0f);
