@@ -3,6 +3,7 @@ import com.google.gson.GsonBuilder;
 import java.util.concurrent.TimeUnit;
 import co.romaji.startchannel.android.model.ChannelInfoResult;
 import co.romaji.startchannel.android.model.PlayListItem;
+import co.romaji.startchannel.android.model.VideoStatistic;
 import co.romaji.startchannel.android.utils.Const;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -40,5 +41,9 @@ public class PasteBinAPI {
 
     public Call<PlayListItem> getListVideoPlayList(String playlistId){
         return this.githubApiInterface.getListVideoPlayList(playlistId, Const.API_KEY);
+    }
+
+    public Call<VideoStatistic> getVideoStatistic(String videoID){
+        return this.githubApiInterface.getVideoStatistic(videoID, Const.API_KEY,"statistics");
     }
 }

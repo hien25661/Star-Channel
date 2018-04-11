@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -16,12 +17,19 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import co.romaji.startchannel.android.R;
 import co.romaji.startchannel.android.adapters.VideoAdapter;
 import co.romaji.startchannel.android.interfaces.SimpleCallback;
 import co.romaji.startchannel.android.model.PlayListItem;
+import co.romaji.startchannel.android.model.VideoStatistic;
 import co.romaji.startchannel.android.networking.GetListVideoTask;
+import co.romaji.startchannel.android.networking.PasteBinAPI;
 import co.romaji.startchannel.android.utils.Const;
+import co.romaji.startchannel.android.utils.YtcUtils;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by nguyenvanhien on 4/4/18.
@@ -32,6 +40,11 @@ public class VideoActivity extends YouTubeBaseActivity implements YouTubePlayer.
     RecyclerView rcvListVideoPlayList;
     @Bind(R.id.youtube_view)
     YouTubePlayerView youTubePlayerView;
+
+    @Bind(R.id.tvViewCount)
+    TextView tvVideoCount;
+    @Bind(R.id.tvVideoName)
+    TextView tvVideoName;
 
     private YouTubePlayer youTubePlayer;
     private boolean isFullScreen;
@@ -87,13 +100,14 @@ public class VideoActivity extends YouTubeBaseActivity implements YouTubePlayer.
             new Handler().post(new Runnable() {
                 @Override
                 public void run() {
-                    youTubePlayer.loadVideo(listVideo.get(0).getSnippet().getResourceId().getVideoId());
+                    getVideoStatistic(listVideo.get(0).getSnippet().getTitle(),listVideo.get(0).getSnippet().getResourceId().getVideoId());
                 }
             });
             videoAdapter.setPlayVideoListener(new VideoAdapter.PlayVideoListener() {
+
                 @Override
-                public void playVideo(String videoId) {
-                    youTubePlayer.loadVideo(videoId);
+                public void playVideo(String videoName, String videoId) {
+                    getVideoStatistic(videoName,videoId);
                 }
             });
 
@@ -111,4 +125,29 @@ public class VideoActivity extends YouTubeBaseActivity implements YouTubePlayer.
             getListVideoTask.execute();
         }
     }
+
+    private void getVideoStatistic(final String videoName,final String videoId){
+        PasteBinAPI.getInstant().getVideoStatistic(videoId).enqueue(new Callback<VideoStatistic>() {
+            @Override
+            public void onResponse(Call<VideoStatistic> call, Response<VideoStatistic> response) {
+                youTubePlayer.loadVideo(videoId);
+                if(response!=null && response.body()!=null){
+                    VideoStatistic videoStatistic = response.body();
+                    tvVideoName.setText(videoName);
+                    if(videoStatistic.getItems()!=null && videoStatistic.getItems().size()>0){
+                       VideoStatistic.Item.Statistics statistics = videoStatistic.getItems().get(0).getStatistics();
+                       if(statistics!=null){
+                            tvVideoCount.setText(YtcUtils.convertNumberFormat(statistics.getViewCount()) + " views");
+                       }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<VideoStatistic> call, Throwable t) {
+
+            }
+        });
+    }
+
 }

@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
+import java.text.DecimalFormat;
+
 import co.romaji.startchannel.android.StarChannelApplication;
 
 /**
@@ -72,6 +74,18 @@ public class YtcUtils {
     public static void fetSourceForImageView(ImageView imv, String url){
         Glide.with(StarChannelApplication.getInstance().getApplicationContext()).load(url)
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE).into(imv);
+    }
+
+    public static String convertNumberFormat(String strNumber){
+        DecimalFormat formatter = new DecimalFormat("#,###,###");
+        long number;
+        try {
+            number = Long.parseLong(strNumber);
+            String yourFormattedString = formatter.format(number);
+            return yourFormattedString;
+        }catch (Exception ex){
+            return "";
+        }
     }
 
 }

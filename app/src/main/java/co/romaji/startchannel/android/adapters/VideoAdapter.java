@@ -40,7 +40,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ItemViewHold
     }
 
     public interface PlayVideoListener{
-        void playVideo(String videoId);
+        void playVideo(String videoName,String videoId);
     }
 
     @Override
@@ -82,7 +82,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ItemViewHold
                         if(playVideoListener != null){
                             if(mItem.getSnippet().getResourceId().getVideoId()!=null){
                                 playVideoListener.playVideo
-                                        (mItem.getSnippet().getResourceId().getVideoId());
+                                        (mItem.getSnippet().getTitle(),mItem.getSnippet().getResourceId().getVideoId());
                             }
                         }
                     }
