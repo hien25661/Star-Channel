@@ -32,13 +32,16 @@
             />
 
         <TextView
+            android:paddingTop="3dp"
+            android:layout_below="@+id/tvVideoName"
             android:id="@+id/tvVideoCount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="4,56676,677 views"
+            android:text=""
             android:textColor="#302e2e"
-            android:textSize="12sp"
-            android:layout_alignParentBottom="true" />
+            android:textSize="11sp"
+            android:layout_alignParentBottom="true"
+            android:ellipsize="marquee"/>
 
     </RelativeLayout>
 

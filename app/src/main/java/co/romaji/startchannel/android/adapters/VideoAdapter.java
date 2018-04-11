@@ -1,6 +1,7 @@
 package co.romaji.startchannel.android.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -60,9 +61,19 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ItemViewHold
                 if (photoUrl != null) {
                     int width = (int)((float)(YtcUtils.getScreenWidth()) / 2);
                     int height = (int)(float)(360 * width/480.0f);
-                    holder.viewContent.getLayoutParams().height = height;
+                    holder.imvThumbnail.getLayoutParams().height = height;
                     YtcUtils.fetSourceForImageView(holder.imvThumbnail,photoUrl);
                     holder.tvVideoName.setText(mItem.getSnippet().getTitle());
+                }
+
+                if(position%2 != 0){
+                    holder.itemView.setBackgroundColor(Color.parseColor("#cddfdf"));
+                }
+
+                if(mItem.getSnippet().getDescription()!=null){
+                    holder.tvVideoCount.setText(mItem.getSnippet().getDescription());
+                }else {
+                    holder.tvVideoCount.setText(mItem.getSnippet().getTitle());
                 }
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +105,9 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ItemViewHold
         View viewContent;
         @Bind(R.id.tvVideoName)
         TextView tvVideoName;
+
+        @Bind(R.id.tvVideoCount)
+        TextView tvVideoCount;
 
         public ItemViewHolder(View itemView) {
             super(itemView);

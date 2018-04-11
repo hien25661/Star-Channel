@@ -3,7 +3,9 @@ package co.romaji.startchannel.android.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -27,7 +29,7 @@ public class MainActivity extends BaseActivity {
     RecyclerView rcvListVideo;
     private PlayListAdapter playListAdapter;
     private ChannelInfoResult channelInfoResult;
-    private GridLayoutManager layoutManager;
+    private LinearLayoutManager layoutManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +41,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initView() {
-        layoutManager = new GridLayoutManager(this,2,GridLayoutManager.VERTICAL,false);
+        layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         rcvListVideo.setLayoutManager(layoutManager);
         rcvListVideo.setHasFixedSize(true);
     }

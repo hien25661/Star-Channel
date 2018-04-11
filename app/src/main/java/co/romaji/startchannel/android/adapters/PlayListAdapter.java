@@ -1,6 +1,7 @@
 package co.romaji.startchannel.android.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
@@ -56,11 +58,21 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ItemVi
                 String photoUrl = mItem.getSnippet().getThumbnails().getHigh().getUrl();
                 Log.e("VOA",""+photoUrl);
                 if (photoUrl != null) {
-                    int width = (int)((float)(YtcUtils.getScreenWidth()) / 2);
+                    int width = (int)((float)(YtcUtils.getScreenWidth()) / 2.3f);
                     int height = (int)(float)(360 * width/480.0f);
-                    holder.itemView.getLayoutParams().width = width;
+                    holder.imvThumbnail.getLayoutParams().width = width;
+                    holder.imvThumbnail.getLayoutParams().height = height;
                     holder.itemView.getLayoutParams().height = height;
                     YtcUtils.fetSourceForImageView(holder.imvThumbnail,photoUrl);
+                }
+                if(position%2 != 0){
+                    holder.itemView.setBackgroundColor(Color.parseColor("#cddfdf"));
+                }
+                if(mItem.getSnippet().getTitle()!=null){
+                    holder.tvPlaylistName.setText(mItem.getSnippet().getTitle());
+                }
+                if(mItem.getSnippet().getDescription()!=null){
+                    holder.tvPlaylistDescription.setText(mItem.getSnippet().getPublishedAt());
                 }
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +93,10 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ItemVi
     class ItemViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.imvThumbnail)
         ImageView imvThumbnail;
+        @Bind(R.id.tvPlaylistName)
+        TextView tvPlaylistName;
+        @Bind(R.id.tvPlaylistDescription)
+        TextView tvPlaylistDescription;
         @Bind(R.id.itemview)
         View itemView;
 
