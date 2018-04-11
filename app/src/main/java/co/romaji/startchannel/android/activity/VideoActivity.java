@@ -1,5 +1,6 @@
 package co.romaji.startchannel.android.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -152,6 +153,21 @@ public class VideoActivity extends YouTubeBaseActivity implements YouTubePlayer.
 
             }
         });
+    }
+
+    @OnClick(R.id.imvShare)
+    public void shareVideo(){
+        if(currentVideoId!=null){
+            try {
+                String linkShare = "https://www.youtube.com/watch?v=" + currentVideoId;
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("text/plain");
+                i.putExtra(Intent.EXTRA_TEXT, linkShare);
+                startActivity(Intent.createChooser(i, "Share Video"));
+            }catch (Exception ex){
+
+            }
+        }
     }
 
 
