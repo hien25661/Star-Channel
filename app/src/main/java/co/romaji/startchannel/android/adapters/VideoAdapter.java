@@ -65,7 +65,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ItemViewHold
                     YtcUtils.fetSourceForImageView(holder.imvThumbnail,photoUrl);
                     holder.tvVideoName.setText(mItem.getSnippet().getTitle());
                 }
-
+                holder.itemView.setBackgroundColor(Color.WHITE);
                 if(position%2 != 0){
                     holder.itemView.setBackgroundColor(Color.parseColor("#cddfdf"));
                 }

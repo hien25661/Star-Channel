@@ -56,7 +56,6 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ItemVi
             final ChannelInfoResult.Item mItem = items.get(position);
             if (mItem != null) {
                 String photoUrl = mItem.getSnippet().getThumbnails().getHigh().getUrl();
-                Log.e("VOA",""+photoUrl);
                 if (photoUrl != null) {
                     int width = (int)((float)(YtcUtils.getScreenWidth()) / 2.3f);
                     int height = (int)(float)(360 * width/480.0f);
@@ -65,6 +64,7 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ItemVi
                     holder.itemView.getLayoutParams().height = height;
                     YtcUtils.fetSourceForImageView(holder.imvThumbnail,photoUrl);
                 }
+                holder.itemView.setBackgroundColor(Color.WHITE);
                 if(position%2 != 0){
                     holder.itemView.setBackgroundColor(Color.parseColor("#cddfdf"));
                 }

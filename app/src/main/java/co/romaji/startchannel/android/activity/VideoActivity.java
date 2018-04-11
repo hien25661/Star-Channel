@@ -54,6 +54,8 @@ public class VideoActivity extends YouTubeBaseActivity implements YouTubePlayer.
     private List<PlayListItem.Item> listVideo = new ArrayList<>();
     private VideoAdapter videoAdapter;
 
+    private String currentVideoId;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,6 +99,7 @@ public class VideoActivity extends YouTubeBaseActivity implements YouTubePlayer.
             videoAdapter = new VideoAdapter(this);
             videoAdapter.setItems((ArrayList<PlayListItem.Item>) listVideo);
             rcvListVideoPlayList.setAdapter(videoAdapter);
+            currentVideoId = listVideo.get(0).getSnippet().getResourceId().getVideoId();
             new Handler().post(new Runnable() {
                 @Override
                 public void run() {
@@ -107,6 +110,7 @@ public class VideoActivity extends YouTubeBaseActivity implements YouTubePlayer.
 
                 @Override
                 public void playVideo(String videoName, String videoId) {
+                    currentVideoId = videoId;
                     getVideoStatistic(videoName,videoId);
                 }
             });
@@ -116,7 +120,7 @@ public class VideoActivity extends YouTubeBaseActivity implements YouTubePlayer.
 
     @Override
     public void failed() {
-
+        finish();
     }
 
     private void getVideoPlayList(String playListID) {
@@ -149,5 +153,7 @@ public class VideoActivity extends YouTubeBaseActivity implements YouTubePlayer.
             }
         });
     }
+
+
 
 }

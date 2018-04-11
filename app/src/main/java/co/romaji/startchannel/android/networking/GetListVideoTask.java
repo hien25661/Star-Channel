@@ -32,6 +32,8 @@ public class GetListVideoTask extends AsyncTask<Void, Void, PlayListItem> {
                     playListItem = response.body();
                     if(playListItem.getItems() !=null && playListItem.getItems().size() > 0) {
                         callback.success(playListItem);
+                    }else {
+                        callback.failed();
                     }
                 }
             }
