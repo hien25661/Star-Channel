@@ -1,48 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@android:color/white"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/itemview"
-    >
-    <ImageView
-        android:id="@+id/imvThumbnail"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="3dp"
+    android:paddingRight="3dp"
+    android:elevation="10dp"
+    app:cardElevation="10dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:background="#b1afaf">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1.5"
-        android:src="@mipmap/ic_launcher"
-        android:scaleType="fitCenter"
-        android:padding="3dp"></ImageView>
-    <RelativeLayout
-        android:id="@+id/viewContent"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_weight="1"
-        android:paddingTop="12dp"
-        android:paddingBottom="14dp">
-        <TextView
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imvThumbnail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tvVideoName"
-            android:textColor="#302e2e"
-            android:textSize="15sp"
-            android:text="Name Video"
-            android:layout_alignParentTop="true"
-            />
+            android:layout_weight="1.5"
+            android:padding="3dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_launcher"></ImageView>
 
-        <TextView
-            android:paddingTop="3dp"
-            android:layout_below="@+id/tvVideoName"
-            android:id="@+id/tvVideoCount"
+        <RelativeLayout
+            android:id="@+id/viewContent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textColor="#302e2e"
-            android:textSize="11sp"
-            android:layout_alignParentBottom="true"
-            android:ellipsize="marquee"/>
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingBottom="14dp"
+            android:paddingTop="12dp">
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/tvVideoName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:text="Name Video"
+                android:textColor="#302e2e"
+                android:textSize="15sp" />
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/tvVideoCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/tvVideoName"
+                android:ellipsize="end"
+                android:paddingTop="3dp"
+                android:text=""
+                android:textColor="#302e2e"
+                android:textSize="11sp"
+                android:maxLines="3"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

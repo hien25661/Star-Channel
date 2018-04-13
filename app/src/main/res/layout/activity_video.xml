@@ -35,9 +35,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <ImageView
+            <com.github.abdularis.civ.CircleImageView
                 android:id="@+id/imvShare"
-                android:layout_width="50dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/ic_share"
                 android:layout_marginRight="3dp"/>
