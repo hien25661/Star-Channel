@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -86,6 +87,11 @@ public class Utils {
         }catch (Exception ex){
             return "";
         }
+    }
+
+    public static void applyFontForView(View v){
+        StarChannelApplication.getFontUtils().applyFontToView(v,
+                StarChannelApplication.getTypeface());
     }
 
 }

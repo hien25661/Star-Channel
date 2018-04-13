@@ -1,5 +1,6 @@
 package co.romaji.startchannel.android.networking;
 
+import co.romaji.startchannel.android.model.Channel;
 import co.romaji.startchannel.android.model.ChannelInfoResult;
 import co.romaji.startchannel.android.model.PlayListItem;
 import co.romaji.startchannel.android.model.VideoStatistic;
@@ -25,5 +26,9 @@ public interface VideoApiInterface {
     Call<VideoStatistic> getVideoStatistic(@Query("id") String videoID,
                                            @Query("key") String key,
                                            @Query("part") String part);
+
+    @GET("channels?part=snippet&id="+Const.CHANNEL_ID_EN
+            +"&fields=items%2Fsnippet%2Fthumbnails&key="+Const.API_KEY)
+    Call<Channel> getChannelAvatar();
 
 }

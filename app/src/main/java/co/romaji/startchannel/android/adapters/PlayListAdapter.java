@@ -65,7 +65,7 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ItemVi
                 }
                 holder.itemView.setBackgroundColor(Color.WHITE);
                 if(position%2 != 0){
-                    holder.itemView.setBackgroundColor(Color.parseColor("#cddfdf"));
+                    //holder.itemView.setBackgroundColor(Color.parseColor("#cddfdf"));
                 }
                 if(mItem.getSnippet().getTitle()!=null){
                     holder.tvPlaylistName.setText(mItem.getSnippet().getTitle());
@@ -102,6 +102,8 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ItemVi
         public ItemViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            Utils.applyFontForView(tvPlaylistName);
+            Utils.applyFontForView(tvPlaylistName);
         }
     }
 }

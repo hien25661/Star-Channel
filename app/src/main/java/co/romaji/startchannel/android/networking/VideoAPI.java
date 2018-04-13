@@ -1,6 +1,8 @@
 package co.romaji.startchannel.android.networking;
 import com.google.gson.GsonBuilder;
 import java.util.concurrent.TimeUnit;
+
+import co.romaji.startchannel.android.model.Channel;
 import co.romaji.startchannel.android.model.ChannelInfoResult;
 import co.romaji.startchannel.android.model.PlayListItem;
 import co.romaji.startchannel.android.model.VideoStatistic;
@@ -45,5 +47,9 @@ public class VideoAPI {
 
     public Call<VideoStatistic> getVideoStatistic(String videoID){
         return this.videoApiInterface.getVideoStatistic(videoID, Const.API_KEY,"statistics");
+    }
+
+    public Call<Channel> getChannelAvatar(){
+        return this.videoApiInterface.getChannelAvatar();
     }
 }
