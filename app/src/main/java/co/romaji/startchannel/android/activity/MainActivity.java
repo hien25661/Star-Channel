@@ -55,7 +55,7 @@ public class MainActivity extends BaseActivity {
         rcvListVideo.setHasFixedSize(true);
         Utils.applyFontForView(tvChannelName);
         Utils.applyFontForView(tvChannelDescription);
-        Utils.applyFontForView(tvYoutube);
+        Utils.applyFontForViewYoutube(tvYoutube);
     }
 
     private void loadChannel() {

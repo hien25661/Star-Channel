@@ -60,10 +60,10 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ItemVi
                     int height = (int)(float)(360 * width/480.0f);
                     holder.imvThumbnail.getLayoutParams().width = width;
                     holder.imvThumbnail.getLayoutParams().height = height;
-                    holder.itemView.getLayoutParams().height = height;
+                    //holder.itemView.getLayoutParams().height = height;
                     Utils.fetSourceForImageView(holder.imvThumbnail,photoUrl);
                 }
-                holder.itemView.setBackgroundColor(Color.WHITE);
+                //holder.itemView.setBackgroundColor(Color.WHITE);
                 if(position%2 != 0){
                     //holder.itemView.setBackgroundColor(Color.parseColor("#cddfdf"));
                 }
@@ -103,7 +103,7 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ItemVi
             super(itemView);
             ButterKnife.bind(this, itemView);
             Utils.applyFontForView(tvPlaylistName);
-            Utils.applyFontForView(tvPlaylistName);
+            Utils.applyFontForView(tvPlaylistDescription);
         }
     }
 }

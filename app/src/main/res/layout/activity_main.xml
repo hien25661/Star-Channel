@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="co.romaji.startchannel.android.activity.MainActivity"
-    android:background="#f1c48130"
+    android:background="#ffffff"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
                     android:text="Youtube"
                     android:textSize="20sp"
                     android:layout_marginLeft="-2dp"
-                    android:textColor="@android:color/white"/>
+                    android:textColor="@android:color/black"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -53,7 +53,7 @@
                 android:id="@+id/tvChannelName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:textSize="20sp"
                 android:text="@string/channel_title"
                 android:textStyle="bold"/>
@@ -61,7 +61,7 @@
                 android:id="@+id/tvChannelDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_row"
+                android:textColor="@android:color/black"
                 android:textSize="15sp"
                 android:text="@string/channel_description"/>
         </LinearLayout>

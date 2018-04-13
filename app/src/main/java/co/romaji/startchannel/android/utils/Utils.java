@@ -4,6 +4,7 @@ package co.romaji.startchannel.android.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
@@ -92,6 +93,10 @@ public class Utils {
     public static void applyFontForView(View v){
         StarChannelApplication.getFontUtils().applyFontToView(v,
                 StarChannelApplication.getTypeface());
+    }
+
+    public static void applyFontForViewYoutube(View v){
+        StarChannelApplication.getFontUtils().applyFontToView(v, StarChannelApplication.getTypeFaceYoutube());
     }
 
 }
