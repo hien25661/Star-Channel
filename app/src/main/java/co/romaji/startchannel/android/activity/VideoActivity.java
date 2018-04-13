@@ -46,6 +46,8 @@ public class VideoActivity extends YouTubeBaseActivity implements YouTubePlayer.
     TextView tvVideoCount;
     @Bind(R.id.tvVideoName)
     TextView tvVideoName;
+    @Bind(R.id.tvShare)
+    TextView tvShare;
 
     private YouTubePlayer youTubePlayer;
     private boolean isFullScreen;
@@ -71,6 +73,10 @@ public class VideoActivity extends YouTubeBaseActivity implements YouTubePlayer.
                 new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         rcvListVideoPlayList.setHasFixedSize(true);
         playListID = getIntent().getStringExtra(Const.PLAYLIST_ID);
+
+        Utils.applyFontForView(tvVideoName);
+        Utils.applyFontForView(tvVideoCount);
+        Utils.applyFontForView(tvShare);
 
     }
 

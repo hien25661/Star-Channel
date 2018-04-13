@@ -44,7 +44,9 @@
                 android:layout_alignParentTop="true"
                 android:text="Name Video"
                 android:textColor="#302e2e"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:maxLines="2"
+                android:ellipsize="end"/>
 
             <TextView
                 android:id="@+id/tvVideoCount"
@@ -57,7 +59,8 @@
                 android:text=""
                 android:textColor="#302e2e"
                 android:textSize="11sp"
-                android:maxLines="3"/>
+                android:maxLines="3"
+                android:lines="1"/>
 
         </RelativeLayout>
     </LinearLayout>

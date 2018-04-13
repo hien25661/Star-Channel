@@ -114,6 +114,8 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ItemViewHold
         public ItemViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            Utils.applyFontForView(tvVideoName);
+            Utils.applyFontForView(tvVideoCount);
         }
     }
 }
