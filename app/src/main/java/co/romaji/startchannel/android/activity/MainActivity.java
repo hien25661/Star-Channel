@@ -7,6 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
@@ -40,6 +44,12 @@ public class MainActivity extends BaseActivity {
     private PlayListAdapter playListAdapter;
     private ChannelInfoResult channelInfoResult;
     private LinearLayoutManager layoutManager;
+
+    @Bind(R.id.adView)
+    AdView mAdView;
+
+    private InterstitialAd mInterstitialAd;
+    private AdRequest adRequest;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +57,16 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
         initView();
         loadChannel();
+
+        AdRequest adRequest1 = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest1);
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId(getResources().getString(R.string.interstitial_id));
+
+        // Request for Ads
+        adRequest = new AdRequest.Builder().build();
+        mInterstitialAd.loadAd(adRequest);
     }
 
     private void initView() {
@@ -98,6 +118,9 @@ public class MainActivity extends BaseActivity {
     @Subscribe
     public void showDetailPlayList(ShowDetailPlayListEvent event){
         if(event!=null && event.getPlayListItem()!=null){
+            if (mInterstitialAd.isLoaded()) {
+                mInterstitialAd.show();
+            }
             Intent intent = new Intent(MainActivity.this,VideoActivity.class);
             intent.putExtra(Const.PLAYLIST_ID,event.getPlayListItem().getId());
             startActivity(intent);

@@ -2,4 +2,7 @@
     <string name="app_name">FapTV</string>
     <string name="channel_title">FapTV - Cơm nguội</string>
     <string name="channel_description">Welcome to the FAP comedy channel. Hope you have fun moments with FAP TV</string>
+
+    <string name="banner_id">/21617015150/45661435/21691966862</string>
+    <string name="interstitial_id">/21617015150/45661435/21691969859</string>
 </resources>
